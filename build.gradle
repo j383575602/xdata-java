@@ -1,0 +1,63 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'jacoco'
+
+repositories {
+    maven {
+        url "$maven_repo_url"
+    }
+    jcenter()
+}
+targetCompatibility = '1.8'
+sourceCompatibility = '1.8'
+
+version "$artifact_version"
+group "$group"
+
+sourceSets {
+    main {
+        java {
+            'src/main/java'
+        }
+    }
+    test {
+        java {
+            'src/test/java'
+        }
+    }
+}
+
+artifacts {
+    archives jar
+}
+jacoco {
+    toolVersion = "0.6.2.201302030002"
+    reportsDir = file("$buildDir/customJacocoReportDir")
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        //html.destination "${buildDir}/jacocoHtml"
+    }
+}
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+//            repository(url: maven_repo_url) {
+//                authentication(userName: maven_repo_user, password: maven_repo_password)
+//            }
+            repository(url:uri('../repo'))
+            pom.project {
+                packaging 'jar'
+                artifactId = 'xdata'
+            }
+        }
+    }
+}
