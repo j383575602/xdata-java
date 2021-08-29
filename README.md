@@ -1,4 +1,5 @@
-#Homepage:
+
+# Homepage:
  
  XData is a simple serialize framework based on binary data, it is swift, small, safe and stable. Enable you to transfer data among java, javascript, ios and flutter.
  You can edit your contract classes and learn more on the page: [http://www.xcore.top](http://www.xcore.top), and all api calls of this website are using XData as the sample.
@@ -28,9 +29,10 @@ This is the xdata repo for java platform. If you want to download all platforms,
     git@github.com:j383575602/xdata-dart.git
 
 
-#Demo
+# Demo
     Assume there are two classes defined with XData protocol.  User, Car
 
+    // init some models
     XCarWrapper car1 = new XCarWrapper();
     car1.setBrand("Audi");
 
@@ -68,7 +70,7 @@ This is the xdata repo for java platform. If you want to download all platforms,
     assert(user2.getCars().get(1).getBrand().equals("Porsche"));
 
 
-#Supprted Types
+# Supprted Types
 
 
  |order|datatype |  single |List      | Set   | StringMap|IntMap | LongMap | FloatMap |DoubleMap |
